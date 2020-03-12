@@ -30,7 +30,16 @@ public abstract class Piece {
 
     public abstract String getPiece();
 
-//    //    public abstract void canMove();
+
+    @Override
+    public boolean equals(Object obj) {
+        if (((Piece) obj).getIsWhite() == getIsWhite()) {
+            return true;
+        }
+        return false;
+    }
+
+    //    //    public abstract void canMove();
 //    public boolean isValidMove(Position newPosition) {
 //        if(newPosition.getRow() > 0 && newPosition.getCol() > 0
 //        && newPosition.getRow() < 8 && newPosition.getCol() < 8) {
@@ -40,12 +49,4 @@ public abstract class Piece {
 //            return false;
 //        }
 //    }
-
-    @Override
-    public boolean equals(Object obj) {
-        if (((Piece) obj).getIsWhite() == getIsWhite()) {
-            return true;
-        }
-        return false;
-    }
 }
