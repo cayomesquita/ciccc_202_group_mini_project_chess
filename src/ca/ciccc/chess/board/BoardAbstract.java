@@ -33,6 +33,8 @@ public class BoardAbstract implements Board {
         }
     }
 
+    
+
     private char backgroud(int i, int j) {
         // border position
         if (i == 0 || i == position.length - 1) {
