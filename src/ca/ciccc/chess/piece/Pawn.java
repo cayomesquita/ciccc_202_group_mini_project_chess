@@ -1,11 +1,11 @@
 package ca.ciccc.chess.piece;
 
-public class Pown extends Piece{
+public class Pawn extends Piece{
     private boolean promoted;
     private Piece newPiece;
     private static int proceeding; // for check if it's the first movement or not, and if it reaches the final line.
 
-    public Pown(boolean isWhite, Position position) {
+    public Pawn(boolean isWhite, Position position) {
         super(isWhite, position);
         this.promoted = false;
         this.proceeding = 1;
