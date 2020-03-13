@@ -1,4 +1,6 @@
 package ca.ciccc.chess.board;
+import ca.ciccc.chess.piece.Piece;
+import ca.ciccc.chess.piece.Pown;
 
 public class ChessBoardBasic extends BoardAbstract {
     public static final int LENGTH_BOARD = 8;

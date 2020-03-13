@@ -5,8 +5,8 @@ public class Pown extends Piece{
     private Piece newPiece;
     private static int proceeding; // for check if it's the first movement or not, and if it reaches the final line.
 
-    public Pown(Position position, boolean isWhite) {
-        super(position, isWhite);
+    public Pown(boolean isWhite) {
+        super(isWhite);
         this.promoted = false;
         this.proceeding = 1;
     }
