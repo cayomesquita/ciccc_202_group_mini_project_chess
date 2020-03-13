@@ -2,10 +2,12 @@ package ca.ciccc.chess.piece;
 
 public abstract class Piece {
     private boolean isWhite;
+    private Position position;
 
     // constructor
-    public Piece(boolean isWhite) {
+    public Piece(boolean isWhite, Position position) {
         this.isWhite = isWhite;
+        this.position = position;
     }
 
     // getters
@@ -13,8 +15,10 @@ public abstract class Piece {
         return isWhite;
     }
 
-    //setter
+    public Position getPosition() { return position; }
 
+    //setter
+    public void setPosition(Position position) { this.position = position; }
     public void setColor(boolean isWhite) {
         this.isWhite = isWhite;
     }

@@ -4,12 +4,12 @@ public class Position {
     int x;
     int y;
 
-
     public Position(String x, int y) throws Exception {
         int x2 = exchange(x);
-        if (x2 >= 0 && x2 < 8 && y >= 0 && y < 8)
+        if (x2 >= 0 && x2 < 8 && y >= 0 && y < 8) {
             this.x = x2;
-        this.y = y;
+            this.y = y;
+        }
     }
 
     private int exchange(String x) throws Exception {
@@ -35,5 +35,20 @@ public class Position {
         }
     }
 
+    // getter
+    public int getX() {
+        return x;
+    }
+    public int getY() {
+        return y;
+    }
+
+    // setter
+    public void setX(int x) {
+        this.x = x;
+    }
+    public void setY(int y) {
+        this.y = y;
+    }
 }
 
