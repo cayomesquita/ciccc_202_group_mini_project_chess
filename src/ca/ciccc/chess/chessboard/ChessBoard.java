@@ -1,23 +1,107 @@
 package ca.ciccc.chess.chessboard;
-import java.awt.*;
 
 public class ChessBoard {
 
-    private Piece[][] board = new Piece[8][8]; //to show game status in text based version
-    private ArrayList<Piece> pieces = new ArrayList<Piece>(32); //create 32 pieces, 16 for both players
+    public static final int LENGTH_BOARD = 8;
+    public static final int OFFSET_BOARD = 2;
+    public static final int LENGTH_BORDER = OFFSET_BOARD * 2;
+    public static final char WHITE = '█';
+    public static final char BLACK = '▒';
+    public static final char VOID = ' ';
+    public static final int RADIX = 10;
+
+//                        ╔════════╗
+//                        ║♜♞♝♛♚♝♞♜║
+//                        ║♟♟♟♟♟♟♟♟║
+//                        ║▒█▒█▒█▒█║
+//                        ║█▒█▒█▒█▒║
+//                        ║▒█▒█▒█▒█║
+//                        ║█▒█▒█▒█▒║
+//                        ║♙♙♙♙♙♙♙♙║
+//                        ║♖♘♗♕♔♗♘♖║
+//                        ╚════════╝
+
+        char[][] position;
 
     public ChessBoard() {
-        board = new Piece[8][8];
+            this.position = new char[LENGTH_BOARD + LENGTH_BORDER][LENGTH_BOARD + LENGTH_BORDER];
 
-        // Set up the board
-        newBoard();
+            for (int i = 0; i < position.length; i++) {
+                for (int j = 0; j < position[i].length; j++) {
+                    position[i][j] = backgroud(i, j);
+                }
+            }
+        }
 
-        wKing = new Point(0, 4);
-        bKing = new Point(7, 4);
-        bPawn = new Point(7, 4);
-        bPawn = new Point(7, 4);
+        private char backgroud ( int i, int j){
+            // border position
+            if (i == 0 || i == position.length - 1) {
+                return j == 0 || j == 1 || j == position.length - 1 || j == position.length - 2 ? VOID : getLetter(j);
+            }
+            if (j == 0 || j == position.length - 1) {
+                return i == 0 || i == 1 || i == position.length - 1 || i == position.length - 2 ? VOID : getDigit(i-1);
+            }
+            // border decoration
+            if (i == 1) {
+                return topBoardDecoration(j);
+            }
+            if (i == position.length - 2) {
+                return bottonBoardDecoration(j);
+            }
+            if (j == 1 || j == position.length - 2) {
+                return '║';
+            }
+            // board
+            return ((i + j) % 2) == 0 ? WHITE : BLACK;
+        }
 
+        private char leftBoardDecoration ( int i){
+            return 0;
+        }
 
+        private char topBoardDecoration ( int j){
+            return j == 1 ? '╔' : j == position.length - 2 ? '╗' : '═';
+        }
 
+        private char bottonBoardDecoration ( int j){
+            return j == 1 ? '╚' : j == position.length - 2 ? '╝' : '═';
+        }
+
+        private char getLetter (int i){
+            return (char) ((int) 'A' + i - 2);
+        }
+
+        private char position ( int i, int j){
+            if (i == 0 || i == position.length - 1) {
+                return j == 0 || j == position.length - 1 ? VOID : getDigit(j);
+            }
+            if (i == 1 || i == position.length - 2) {
+                return j == 1 || j == position.length - 2 ? VOID : getDigit(j);
+            }
+            return 0;
+        }
+        private char getDigit ( int j){
+            return Character.forDigit(j, RADIX);
+        }
+        private boolean isBorderPosition ( int i, int j){
+            return false;
+        }
+        private char decoration ( int i, int j){
+            return 0;
+        }
+        private boolean isBorderDecoration ( int i, int j){
+            return false;
+        }
+        public void print () {
+            for (int i = 0; i < position.length; i++) {
+                for (int j = 0; j < position[i].length; j++) {
+                    System.out.print(position[i][j]);
+                }
+                System.out.println();
+            }
+        }
+    public static void main(String[] args) {
+        ChessBoard ch = new ChessBoard();
+        ch.print();
     }
 }
