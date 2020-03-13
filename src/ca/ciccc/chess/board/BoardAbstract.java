@@ -36,10 +36,10 @@ public class BoardAbstract implements Board {
     private char backgroud(int i, int j) {
         // border position
         if (i == 0 || i == position.length - 1) {
-            return j == 0 || j == 1 || j == position.length - 1 || j == position.length - 2 ? VOID : getDigit(j - 1);
+            return j == 0 || j == 1 || j == position.length - 1 || j == position.length - 2 ? VOID : getLetter(j);
         }
         if (j == 0 || j == position.length - 1) {
-            return i == 0 || i == 1 || i == position.length - 1 || i == position.length - 2 ? VOID : getLetter(i);
+            return i == 0 || i == 1 || i == position.length - 1 || i == position.length - 2 ? VOID : getDigit(i - 1);
         }
         // border decoration
         if (i == 1) {
@@ -68,7 +68,7 @@ public class BoardAbstract implements Board {
     }
 
     private char getLetter(int i) {
-        return (char) ((int) 'J' - i);
+        return (char) ((int) 'A' + i-2);
     }
 
     private char position(int i, int j) {
@@ -82,7 +82,7 @@ public class BoardAbstract implements Board {
     }
 
     private char getDigit(int j) {
-        return Character.forDigit(j, RADIX);
+        return Character.forDigit(9 - j, RADIX);
     }
 
     private boolean isBorderPosition(int i, int j) {
