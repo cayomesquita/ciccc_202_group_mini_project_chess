@@ -1,17 +1,15 @@
 package ca.ciccc.chess.piece;
 
 public class Queen extends Piece {
-    public Queen(boolean isWhite, Position position){
+
+    public Queen(boolean isWhite, Position position) {
         super(isWhite, position);
     }
 
-
     @Override
-    public String getPiece() {
-        if (getIsWhite() == true) {
-            return "♕";
-        }
-        return "♛";
+    protected char loadPiece() {
+        return getIsWhite() ? QUENN_WHITE : QUENN_BLACK;
     }
+
 
 }
