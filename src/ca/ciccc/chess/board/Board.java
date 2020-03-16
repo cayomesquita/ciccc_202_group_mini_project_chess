@@ -8,4 +8,6 @@ public interface Board {
     void print();
 
     void add(Piece piece, Position position);
+
+    void move(Position from , Position to) throws Exception;
 }

@@ -34,26 +34,4 @@ public class Pawn extends Piece {
     protected char loadPiece() {
         return getIsWhite() ? PAWN_WHITE : PAWN_BLACK;
     }
-
-//    @Override
-//    public boolean isValidMove(Position newPosition) {
-//        if(!super.isValidMove(position)) {
-//            return false;
-//        }
-//        if (this.proceeding == 1) {
-//            if (newPosition.getRow() == getPosition().getRow() + 1
-//                    && newPosition.getCol() == getPosition().getCol() + 1) {
-//                return true;
-//            } else if (newPosition.getRow() == getPosition().getRow()
-//                    && newPosition.getCol() == getPosition().getCol() + 2) {
-//                return true;
-//            }
-//        } else {
-//            if (newPosition.getRow() == getPosition().getRow() + 1
-//                    && newPosition.getCol() == getPosition().getCol() + 1) {
-//                return true;
-//            }
-//        }
-//         return false;
-//    }
 }

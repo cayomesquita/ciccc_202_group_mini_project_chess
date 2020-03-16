@@ -72,22 +72,5 @@ public abstract class Piece {
         }
         return false;
     }
-//
-//    // New changes for movement 3/13
-//    // check is the position OK or Not
-//    public boolean isValidMove(Position newPosition) {
-//        if(newPosition.getX() > 0 && newPosition.getY() > 0
-//        && newPosition.getX() < 8 && newPosition.getY() < 8) {
-//            return true;
-//        }
-//        else {
-//            return false;
-//        }
-//    }
-//
-//    public void setNewPosition(Position newPosition) {
-//        if (isValidMove(newPosition)){
-//            this.position = newPosition;
-//        }
-//    }
+
 }
