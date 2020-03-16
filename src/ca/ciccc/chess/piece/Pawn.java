@@ -1,6 +1,6 @@
 package ca.ciccc.chess.piece;
 
-public class Pawn extends Piece{
+public class Pawn extends Piece {
     private boolean promoted;
     private Piece newPiece;
     private static int proceeding; // for check if it's the first movement or not, and if it reaches the final line.
@@ -11,6 +11,9 @@ public class Pawn extends Piece{
         this.proceeding = 1;
     }
 
+    public Pawn(boolean white) {
+        super(white);
+    }
 
     public void promote(Piece newPiece) {
         if (!promoted && proceeding == 7) {
@@ -28,14 +31,9 @@ public class Pawn extends Piece{
     }
 
     @Override
-    public String getPiece() {
-        if (getIsWhite() == true) {
-            return "♙";
-        }
-        return "♟";
+    protected char loadPiece() {
+        return getIsWhite() ? PAWN_WHITE : PAWN_BLACK;
     }
-
-
 
 //    @Override
 //    public boolean isValidMove(Position newPosition) {

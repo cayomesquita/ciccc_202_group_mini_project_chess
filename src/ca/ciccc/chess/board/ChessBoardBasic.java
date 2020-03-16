@@ -1,9 +1,11 @@
 package ca.ciccc.chess.board;
 
+import ca.ciccc.chess.piece.Piece;
+import ca.ciccc.chess.piece.Position;
+
 public class ChessBoardBasic extends BoardAbstract {
+
     public static final int LENGTH_BOARD = 8;
-    public static final int OFFSET_BOARD = 2;
-    public static final int LENGTH_BORDER = OFFSET_BOARD * 2;
     public static final char WHITE = '█';
     public static final char BLACK = '▒';
     public static final char VOID = ' ';
@@ -20,52 +22,37 @@ public class ChessBoardBasic extends BoardAbstract {
 //                        ║♖♘♗♕♔♗♘♖║
 //                        ╚════════╝
 
-    char[][] position;
+    char[][] boardGraph;
+    boolean graphRefreshed;
+    Piece[][] pieces;
 
     public ChessBoardBasic() {
-        this.position = new char[LENGTH_BOARD + LENGTH_BORDER][LENGTH_BOARD + LENGTH_BORDER];
-
-        for (int i = 0; i < position.length; i++) {
-            for (int j = 0; j < position[i].length; j++) {
-                position[i][j] = backgroud(i, j);
-            }
-        }
+        this.boardGraph = new char[LENGTH_BOARD][LENGTH_BOARD];
+        this.pieces = new Piece[LENGTH_BOARD][LENGTH_BOARD];
+        refreshBoard();
     }
 
+    private void refreshBoard() {
+        for (int row = 0; row < boardGraph.length; row++) {
+            for (int collumn = 0; collumn < boardGraph[row].length; collumn++) {
+                boardGraph[row][collumn] = pieces[row][collumn] == null ?
+                        backgroud(row, collumn) : pieces[row][collumn].getPiece();
+            }
+        }
+        graphRefreshed = true;
+    }
 
 
     private char backgroud(int i, int j) {
-        // border position
-        if (i == 0 || i == position.length - 1) {
-            return j == 0 || j == 1 || j == position.length - 1 || j == position.length - 2 ? VOID : getDigit(j - 1);
-        }
-        if (j == 0 || j == position.length - 1) {
-            return i == 0 || i == 1 || i == position.length - 1 || i == position.length - 2 ? VOID : getLetter(i);
-        }
-        // border decoration
-        if (i == 1) {
-            return topBoardDecoration(j);
-        }
-        if (i == position.length - 2) {
-            return bottonBoardDecoration(j);
-        }
-        if (j == 1 || j == position.length - 2) {
-            return '║';
-        }
-        // board
         return ((i + j) % 2) == 0 ? WHITE : BLACK;
     }
 
-    private char leftBoardDecoration(int i) {
-        return 0;
-    }
-
     private char topBoardDecoration(int j) {
-        return j == 1 ? '╔' : j == position.length - 2 ? '╗' : '═';
+        return j == 1 ? '╔' : j == boardGraph.length - 2 ? '╗' : '═';
     }
 
     private char bottonBoardDecoration(int j) {
-        return j == 1 ? '╚' : j == position.length - 2 ? '╝' : '═';
+        return j == 1 ? '╚' : j == boardGraph.length - 2 ? '╝' : '═';
     }
 
     private char getLetter(int i) {
@@ -73,11 +60,11 @@ public class ChessBoardBasic extends BoardAbstract {
     }
 
     private char position(int i, int j) {
-        if (i == 0 || i == position.length - 1) {
-            return j == 0 || j == position.length - 1 ? VOID : getDigit(j);
+        if (i == 0 || i == boardGraph.length - 1) {
+            return j == 0 || j == boardGraph.length - 1 ? VOID : getDigit(j);
         }
-        if (i == 1 || i == position.length - 2) {
-            return j == 1 || j == position.length - 2 ? VOID : getDigit(j);
+        if (i == 1 || i == boardGraph.length - 2) {
+            return j == 1 || j == boardGraph.length - 2 ? VOID : getDigit(j);
         }
         return 0;
     }
@@ -86,26 +73,27 @@ public class ChessBoardBasic extends BoardAbstract {
         return Character.forDigit(j, RADIX);
     }
 
-    private boolean isBorderPosition(int i, int j) {
-        return false;
-    }
-
-    private char decoration(int i, int j) {
-        return 0;
-    }
-
-    private boolean isBorderDecoration(int i, int j) {
-        return false;
-    }
-
     @Override
     public void print() {
-        for (int i = 0; i < position.length; i++) {
-            for (int j = 0; j < position[i].length; j++) {
-                System.out.print(position[i][j]);
+        if (!graphRefreshed) {
+            refreshBoard();
+        }
+        for (int i = boardGraph.length - 1; i >= 0; i--) {
+            for (int j = 0; j < boardGraph[i].length; j++) {
+                System.out.print(boardGraph[i][j]);
             }
             System.out.println();
         }
+    }
+
+    @Override
+    public void add(Piece piece, Position position) {
+        this.pieces[position.getRow()][position.getCollumn()] = piece;
+        updateBoard();
+    }
+
+    private void updateBoard() {
+        graphRefreshed = false;
     }
 
 }

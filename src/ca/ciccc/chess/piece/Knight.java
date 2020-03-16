@@ -6,12 +6,12 @@ public class Knight extends Piece {
         super(isWhite, position);
     }
 
+    public Knight(boolean white) {
+        super(white);
+    }
 
     @Override
-    public String getPiece() {
-        if (getIsWhite() == true) {
-            return "♘";
-        }
-        return "♞";
+    protected char loadPiece() {
+        return getIsWhite() ? KNIGHT_WHITE : KNIGHT_BLACK;
     }
 }

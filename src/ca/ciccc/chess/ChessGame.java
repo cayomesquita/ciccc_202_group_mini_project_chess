@@ -1,17 +1,17 @@
 package ca.ciccc.chess;
 
-import ca.ciccc.chess.board.Board;
-import ca.ciccc.chess.board.BoardFactory;
+import ca.ciccc.chess.board.BoardController;
 
 public class ChessGame {
 
-    private Board board;
+    private BoardController boardController;
 
     public ChessGame() {
-        board = BoardFactory.createChessBoard();
+        boardController = BoardController.getInstante();
     }
 
-    public void start() {
-        board.print();
+    public void start() throws Exception {
+        boardController.initialize();
+        boardController.printBoard();
     }
 }
