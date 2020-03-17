@@ -14,4 +14,6 @@ public class King extends Piece {
     protected char loadPiece() {
         return getIsWhite() ? KING_WHITE : KING_BLACK;
     }
+
+
 }

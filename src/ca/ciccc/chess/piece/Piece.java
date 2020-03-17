@@ -73,14 +73,4 @@ public abstract class Piece {
         return false;
     }
 
-    //    //    public abstract void canMove();
-//    public boolean isValidMove(Position newPosition) {
-//        if(newPosition.getRow() > 0 && newPosition.getCol() > 0
-//        && newPosition.getRow() < 8 && newPosition.getCol() < 8) {
-//            return true;
-//        }
-//        else {
-//            return false;
-//        }
-//    }
 }
