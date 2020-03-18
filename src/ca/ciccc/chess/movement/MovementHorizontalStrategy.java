@@ -38,6 +38,10 @@ public final class MovementHorizontalStrategy extends MovementStrategyAbstract {
     private List<Movement> forwardRight(final Position orinalPosition, Board board, boolean isWhite) {
         List<Position> nextPositions = new ArrayList<>();
         forward(nextPositions, orinalPosition, board, isWhite, 1, 0);
+        ArrayList<Movement> li = new ArrayList<Movement>();
+        for (Position nextPosition : nextPositions) {
+            li.add(new Movement(orinalPosition, nextPosition));
+        }
         return nextPositions.stream()
                 .map(position -> new Movement(orinalPosition, position))
                 .collect(Collectors.toList());

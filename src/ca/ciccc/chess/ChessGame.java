@@ -2,6 +2,7 @@ package ca.ciccc.chess;
 
 import ca.ciccc.chess.board.BoardController;
 import ca.ciccc.chess.movement.Movement;
+import ca.ciccc.chess.piece.King;
 import ca.ciccc.chess.piece.Piece;
 import ca.ciccc.chess.piece.Position;
 import ca.ciccc.chess.piece.Rook;
@@ -26,11 +27,11 @@ public class ChessGame {
     public void startTest() throws Exception {
 
         Position position1 = new Position(1, 3);
-        Position position2 = new Position(1, 7);
+        Position position2 = new Position(1, 4);
         Position position3 = new Position(2, 3);
-        boardController.addPieceTest(new Rook(true), position1)
+        boardController.addPieceTest(new King(true), position1)
                 .addPieceTest(new Rook(false), position2)
-                .addPieceTest(new Rook(false), position3);
+                .addPieceTest(new Rook(true), position3);
         Piece piece = boardController.getByPosition(position1);
 
         System.out.println(position2);

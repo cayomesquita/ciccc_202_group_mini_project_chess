@@ -11,26 +11,26 @@ public final class MovementStrategyFactory {
 
     public static List<MovementStrategy> getStrategies(Piece piece) {
         if (piece instanceof King) {
-            // TODO
-            return Arrays.asList();
+            // TODO Zack
+            return Arrays.asList(MovementKingStrategy.getInstance());
         }
         if (piece instanceof Queue) {
-            // TODO
+            // TODO Tomna
             return Arrays.asList();
         }
         if (piece instanceof Bishop) {
-            // TODO
+            // TODO Tomna
             return Arrays.asList();
         }
         if (piece instanceof Rook) {
             return Arrays.asList(MovementHorizontalStrategy.getInstance(), MovementVerticalStrategy.getInstance());
         }
         if (piece instanceof Knight) {
-            // TODO
+            // TODO Zack
             return Arrays.asList();
         }
         if (piece instanceof Pawn) {
-            // TODO
+            // TODO Tomona
             return Arrays.asList();
         }
         return Collections.emptyList();

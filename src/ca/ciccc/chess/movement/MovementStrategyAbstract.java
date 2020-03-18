@@ -28,4 +28,13 @@ public abstract class MovementStrategyAbstract implements MovementStrategy {
     protected Position move(Position position, int horizontal, int vertical) {
         return new Position(position.getRow() + vertical, position.getCollumn() + horizontal);
     }
+
+    protected void checkNewPosition(Position orinalPosition, Board board, boolean isWhite, List<Movement> list, Position position) {
+        if (isPositionInsideBoard(position, board)) {
+            Piece piece = board.get(position);
+            if (piece == null || piece.getIsWhite() != isWhite) {
+                list.add(new Movement(orinalPosition, position));
+            }
+        }
+    }
 }
