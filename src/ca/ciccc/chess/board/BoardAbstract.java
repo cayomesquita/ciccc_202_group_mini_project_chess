@@ -2,6 +2,8 @@ package ca.ciccc.chess.board;
 
 public abstract class BoardAbstract implements Board {
 
+    public static final int LENGTH_BOARD = 8;
+
     char[][] position;
 
     @Override
@@ -12,5 +14,10 @@ public abstract class BoardAbstract implements Board {
             }
             System.out.println();
         }
+    }
+
+    @Override
+    public int size() {
+        return LENGTH_BOARD;
     }
 }

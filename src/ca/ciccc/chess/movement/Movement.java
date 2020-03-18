@@ -1,4 +1,6 @@
-package ca.ciccc.chess.piece;
+package ca.ciccc.chess.movement;
+
+import ca.ciccc.chess.piece.Position;
 
 public class Movement {
     private Position starting;
@@ -20,6 +22,12 @@ public class Movement {
         return new Movement(starting, arrival);
     }
 
-
+    @Override
+    public String toString() {
+        return "[" +
+                starting +
+                ", " + arrival +
+                ']';
+    }
 }
 

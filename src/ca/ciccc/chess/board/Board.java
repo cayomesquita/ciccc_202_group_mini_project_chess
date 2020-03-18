@@ -9,5 +9,9 @@ public interface Board {
 
     void add(Piece piece, Position position);
 
+    Piece get(Position position);
+
     void move(Position from , Position to) throws Exception;
+
+    int size();
 }
