@@ -77,5 +77,13 @@ public class Position {
     public void setCollumn(int collumn) {
         this.collumn = collumn;
     }
+
+    @Override
+    public String toString() {
+        return "{" +
+                row +
+                ", " + collumn +
+                '}';
+    }
 }
 

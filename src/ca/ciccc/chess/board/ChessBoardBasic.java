@@ -5,7 +5,6 @@ import ca.ciccc.chess.piece.Position;
 
 public class ChessBoardBasic extends BoardAbstract {
 
-    public static final int LENGTH_BOARD = 8;
     public static final char WHITE = '█';
     public static final char BLACK = '▒';
     public static final char VOID = ' ';
@@ -27,8 +26,8 @@ public class ChessBoardBasic extends BoardAbstract {
     Piece[][] pieces;
 
     public ChessBoardBasic() {
-        this.boardGraph = new char[LENGTH_BOARD][LENGTH_BOARD];
-        this.pieces = new Piece[LENGTH_BOARD][LENGTH_BOARD];
+        this.boardGraph = new char[size()][size()];
+        this.pieces = new Piece[size()][size()];
         refreshBoard();
     }
 
@@ -103,6 +102,11 @@ public class ChessBoardBasic extends BoardAbstract {
         pieces[to.getRow()][to.getCollumn()] = pieces[from.getRow()][from.getCollumn()];
         pieces[from.getRow()][from.getCollumn()] = null;
         updateBoard();
+    }
+
+    @Override
+    public Piece get(Position position) {
+        return this.pieces[position.getRow()][position.getCollumn()];
     }
 
     private void updateBoard() {

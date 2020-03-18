@@ -1,6 +1,12 @@
 package ca.ciccc.chess.board;
 
+import ca.ciccc.chess.movement.MovementStrategy;
+import ca.ciccc.chess.movement.MovementStrategyFactory;
+import ca.ciccc.chess.movement.Movement;
 import ca.ciccc.chess.piece.*;
+
+import java.util.ArrayList;
+import java.util.List;
 
 public class BoardController {
 
@@ -17,7 +23,7 @@ public class BoardController {
         return instance;
     }
 
-    public void initialize() {
+    public void addPieceTest() {
         addWhitePieces();
         addBlackPieces();
     }
@@ -58,5 +64,28 @@ public class BoardController {
 
     public void printBoard() {
         board.print();
+    }
+
+    //FIXME remove test
+    public BoardController addPieceTest(Piece piece, Position position) {
+        board.add(piece, position);
+        return this;
+    }
+
+    public Piece getByPosition(Position position) {
+        return board.get(position);
+    }
+
+    public List<Movement> getPossibleMovements(Position position) throws Exception {
+        Piece piece = board.get(position);
+        if (piece == null) {
+            throw new Exception("No piece in position");
+        }
+        List<MovementStrategy> strategies = MovementStrategyFactory.getStrategies(piece);
+        List<Movement> possibleMovements = new ArrayList<>();
+        for (MovementStrategy strategy : strategies) {
+            possibleMovements.addAll(strategy.getPossibleMoviments(position, board, piece.getIsWhite()));
+        }
+        return possibleMovements;
     }
 }
