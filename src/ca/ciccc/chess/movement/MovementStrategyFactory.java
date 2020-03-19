@@ -14,13 +14,13 @@ public final class MovementStrategyFactory {
             // TODO Zack
             return Arrays.asList(MovementKingStrategy.getInstance());
         }
-        if (piece instanceof Queue) {
+        if (piece instanceof Queen) {
             // TODO Tomna
-            return Arrays.asList();
+            return Arrays.asList(MovementBishopStrategy.getInstance(), MovementHorizontalStrategy.getInstance(), MovementVerticalStrategy.getInstance());
         }
         if (piece instanceof Bishop) {
             // TODO Tomna
-            return Arrays.asList();
+            return Arrays.asList(MovementBishopStrategy.getInstance());
         }
         if (piece instanceof Rook) {
             return Arrays.asList(MovementHorizontalStrategy.getInstance(), MovementVerticalStrategy.getInstance());
@@ -31,7 +31,7 @@ public final class MovementStrategyFactory {
         }
         if (piece instanceof Pawn) {
             // TODO Tomona
-            return Arrays.asList();
+            return Arrays.asList(MovementPawnStrategy.getInstance());
         }
         return Collections.emptyList();
     }

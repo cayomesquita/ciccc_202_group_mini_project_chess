@@ -25,10 +25,10 @@ public class ChessGame {
 
         Position position1 = new Position(1, 3);
         Position position2 = new Position(2, 3);
-      //  Position position3 = new Position(2, 3);
-        boardController.addPieceTest(new King(true), position1)
-                .addPieceTest(new Knight(false), position2);
-        //        .addPieceTest(new Rook(true), position3);
+        Position position3 = new Position(2, 3);
+        boardController.addPieceTest(new Pawn(true), position1)
+                .addPieceTest(new Rook(false), position2)
+                .addPieceTest(new Rook(true), position3);
         Piece piece = boardController.getByPosition(position1);
 
         System.out.println(position2);
