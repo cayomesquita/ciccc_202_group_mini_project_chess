@@ -1,5 +1,7 @@
 package ca.ciccc.chess.piece;
 
+import java.util.Objects;
+
 public class Position {
     int row;
     int collumn;
@@ -76,6 +78,20 @@ public class Position {
 
     public void setCollumn(int collumn) {
         this.collumn = collumn;
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        Position position = (Position) o;
+        return row == position.row &&
+                collumn == position.collumn;
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(row, collumn);
     }
 
     @Override

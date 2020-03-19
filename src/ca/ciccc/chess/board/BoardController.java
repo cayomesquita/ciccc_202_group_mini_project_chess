@@ -6,7 +6,9 @@ import ca.ciccc.chess.movement.Movement;
 import ca.ciccc.chess.piece.*;
 
 import java.util.ArrayList;
+import java.util.HashSet;
 import java.util.List;
+import java.util.Set;
 
 public class BoardController {
 
@@ -76,13 +78,13 @@ public class BoardController {
         return board.get(position);
     }
 
-    public List<Movement> getPossibleMovements(Position position) throws Exception {
+    public Set<Movement> getPossibleMovements(Position position) throws Exception {
         Piece piece = board.get(position);
         if (piece == null) {
             throw new Exception("No piece in position");
         }
         List<MovementStrategy> strategies = MovementStrategyFactory.getStrategies(piece);
-        List<Movement> possibleMovements = new ArrayList<>();
+        Set<Movement> possibleMovements = new HashSet<>();
         for (MovementStrategy strategy : strategies) {
             possibleMovements.addAll(strategy.getPossibleMoviments(position, board, piece.getIsWhite()));
         }
