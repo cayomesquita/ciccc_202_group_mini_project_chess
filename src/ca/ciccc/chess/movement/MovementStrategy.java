@@ -9,4 +9,5 @@ public interface MovementStrategy {
 
     List<Movement> getPossibleMoviments(Position orinalPosition, Board board, boolean isWhite);
 
+    boolean checkPossibleMoviment(Movement movement, Board board, boolean isWhite);
 }

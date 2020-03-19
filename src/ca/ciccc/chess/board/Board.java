@@ -11,7 +11,7 @@ public interface Board {
 
     Piece get(Position position);
 
-    void move(Position from , Position to) throws Exception;
+    boolean move(Position from , Position to) throws Exception;
 
     int size();
 }

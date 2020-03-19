@@ -90,4 +90,20 @@ public class BoardController {
         }
         return possibleMovements;
     }
+
+    public boolean move(Movement movement) throws Exception {
+        Piece piece = board.get(movement.getStarting());
+        if (piece == null) {
+            throw new Exception("No piece in position");
+        }
+        List<MovementStrategy> strategies = MovementStrategyFactory.getStrategies(piece);
+        Set<Movement> possibleMovements = new HashSet<>();
+        for (MovementStrategy strategy : strategies) {
+            if (strategy.checkPossibleMoviment(movement, board, piece.getIsWhite())) {
+                return board.move(movement.getStarting(),movement.getArrival());
+            }
+        }
+        return false;
+    }
+
 }
