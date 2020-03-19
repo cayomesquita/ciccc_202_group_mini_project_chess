@@ -12,7 +12,7 @@ public final class MovementBishopStrategy extends MovementStrategyAbstract {
 
     private static MovementBishopStrategy instance = new MovementBishopStrategy();
     private static Position possiblePosition;
-    private static boolean stop = false;
+    private boolean stop = false;
 
     private MovementBishopStrategy() {
         super();
@@ -62,12 +62,13 @@ public final class MovementBishopStrategy extends MovementStrategyAbstract {
     protected void checkNewPosition(Position orinalPosition, Board board, boolean isWhite, List<Movement> list, Position position) {
         if (isPositionInsideBoard(position, board)) {
             Piece piece = board.get(position);
-            if (piece != null) {
-                stop = true;
-            } else if (piece == null || piece.getIsWhite() != isWhite) {
+            if (piece == null) {
                 list.add(new Movement(orinalPosition, position));
+            } else if (piece != null && piece.getIsWhite() != isWhite) {
+                list.add(new Movement(orinalPosition, position));
+                stop = true;
+            } else if (piece != null && piece.getIsWhite() == isWhite) {
+                stop = true;
             }
-
         }
-    }
-}
+    }}

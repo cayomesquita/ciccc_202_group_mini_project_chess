@@ -22,16 +22,14 @@ public class ChessGame {
 
     //FIXME remove test
     public void startTest() throws Exception {
-
-        Position position1 = new Position(1, 3);
-        Position position2 = new Position(2, 4);
-        Position position3 = new Position(2, 3);
-        boardController.addPieceTest(new Pawn(true), position1)
-                .addPieceTest(new Rook(false), position2)
-                .addPieceTest(new Rook(true), position3);
+        Position position1 = new Position(1, 1);
+        Position position2 = new Position(2, 2);
+        Position position3 = new Position(2, 1);
+        boardController.addPieceTest(new Bishop(false), position1)
+                .addPieceTest(new Pawn(false), position2)
+                .addPieceTest(new Pawn(false), position3);
 
         Piece piece = boardController.getByPosition(position1);
-
         System.out.println(position2);
 
         List<Movement> result = boardController.getPossibleMovements(position2);
