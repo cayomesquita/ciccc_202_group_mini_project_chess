@@ -2,6 +2,8 @@ package ca.ciccc.chess.movement;
 
 import ca.ciccc.chess.piece.Position;
 
+import java.util.Objects;
+
 public class Movement {
     private Position starting;
     private Position arrival;
@@ -20,6 +22,20 @@ public class Movement {
         Position starting = Position.parseBoardPosition(letters[index++], letters[index++]);
         Position arrival = Position.parseBoardPosition(letters[index++], letters[index]);
         return new Movement(starting, arrival);
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        Movement movement = (Movement) o;
+        return starting.equals(movement.starting) &&
+                arrival.equals(movement.arrival);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(starting, arrival);
     }
 
     @Override

@@ -1,4 +1,5 @@
 import ca.ciccc.chess.ChessGame;
+import ca.ciccc.chess.input.InputController;
 
 public class Driver {
 
