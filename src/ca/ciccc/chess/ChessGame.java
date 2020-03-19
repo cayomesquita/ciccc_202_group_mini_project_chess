@@ -24,14 +24,22 @@ public class ChessGame {
     public void startTest() throws Exception {
 
         Position position1 = new Position(1, 3);
+<<<<<<< HEAD
         Position position2 = new Position(2, 4);
         Position position3 = new Position(2, 3);
         boardController.addPieceTest(new Pawn(true), position1)
                 .addPieceTest(new Rook(false), position2)
                 .addPieceTest(new Rook(true), position3);
+=======
+      //  Position position2 = new Position(1, 4);
+      //  Position position3 = new Position(2, 3);
+        boardController.addPieceTest(new King(true), position1);
+        //        .addPieceTest(new Rook(false), position2)
+        //        .addPieceTest(new Rook(true), position3);
+>>>>>>> dc14a2c80930962039729f97fdb06b2fc32d2452
         Piece piece = boardController.getByPosition(position1);
 
-        System.out.println(position2);
+       // System.out.println(position2);
         System.out.println(position1);
         List<Movement> result = boardController.getPossibleMovements(position1);
         System.out.println(result.size());
