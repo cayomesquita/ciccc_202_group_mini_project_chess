@@ -37,33 +37,32 @@ public class ChessGame {
 //                .addPieceTest(new Rook(true), position4);
 //        Piece piece = boardController.getByPosition(position1);
 
+//
+//        Position position1 = new Position(3, 3);
+////        Position position2 = new Position(2, 2);
+////        Position position3 = new Position(4, 1);
+////        Position position4 = new Position(1, 2);
+//        boardController
+//                .addPieceTest(new Knight(true), position1);
+////                .addPieceTest(new Rook(true), position2)
+////                .addPieceTest(new Rook(false), position3)
+////                .addPieceTest(new Rook(true), position4);
+//        Piece piece = boardController.getByPosition(position1);
+//
+//        System.out.println(position2);
 
-        Position position1 = new Position(3, 3);
-//        Position position2 = new Position(2, 2);
-//        Position position3 = new Position(4, 1);
-//        Position position4 = new Position(1, 2);
-        boardController
-                .addPieceTest(new Knight(true), position1);
-//                .addPieceTest(new Rook(true), position2)
-//                .addPieceTest(new Rook(false), position3)
-//                .addPieceTest(new Rook(true), position4);
+
+        Position position1 = new Position(1, 1);
+        Position position2 = new Position(2, 2);
+        Position position3 = new Position(2, 1);
+        Position position4 = new Position(1, 3);
+        boardController.addPieceTest(new Queen(false), position1)
+                .addPieceTest(new Rook(true), position2)
+                .addPieceTest(new Rook(false), position3)
+                .addPieceTest(new Rook(true), position4);
         Piece piece = boardController.getByPosition(position1);
 
-        System.out.println(position2);
-
-
-//        Position position1 = new Position(1, 1);
-//        Position position2 = new Position(2, 2);
-//        Position position3 = new Position(2, 1);
-//        Position position4 = new Position(1, 3);
-//        boardController.addPieceTest(new Queen(false), position1)
-//                .addPieceTest(new Rook(false), position2)
-//                .addPieceTest(new Rook(false), position3)
-//                .addPieceTest(new Rook(true), position4);
-//        Piece piece = boardController.getByPosition(position1);
-
         System.out.println(position1);
->>>>>>> bec6669d7306d3c45ab03d872a5ec40ba786d9b0
 
         Set<Movement> result = boardController.getPossibleMovements(position1);
         System.out.println("You have " + result.size() + " movements to to.");
