@@ -106,4 +106,19 @@ public class BoardController {
         return false;
     }
 
+
+    // Check if the game is over or not
+    public boolean checkmateOrNot(Position toPosition) {
+        Piece target = board.get(toPosition);
+        if (target.getClass().getName() == "King$1") {
+            if(target.getIsWhite() == true) {
+                System.out.println("The White King was killed.\n Team Black is winner.");
+                return true;
+            } else {
+                System.out.println("The Black King was killed.\n Team White is winner.");
+                return true;
+            }
+        }
+        return false;
+    }
 }

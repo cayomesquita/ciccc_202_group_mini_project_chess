@@ -70,7 +70,12 @@ public class ChessGame {
         boardController.move(movement1);
 
         boardController.printBoard();
+
+
+        // Check if the game is over or not
+        if(boardController.checkmateOrNot(movement1.getArrival())){
+            return;
+        }
+
+        }
     }
-
-
-}
