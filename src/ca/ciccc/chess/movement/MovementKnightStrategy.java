@@ -24,12 +24,12 @@ public final class MovementKnightStrategy extends MovementStrategyAbstract {
 
         Position upright1 = move(orinalPosition, 1, 2);
         Position upright2 = move(orinalPosition, 2, 1);
-        Position upleft1 = move(orinalPosition, 2, -1);
-        Position upleft2 = move(orinalPosition, 1, -2);
-        Position downright1 = move(orinalPosition, 1, -2);
-        Position downright2 = move(orinalPosition, 2, -1);
-        Position downleft1 = move(orinalPosition, -1, -2);
-        Position downleft2 = move(orinalPosition, -2, -1);
+        Position upleft1 = move(orinalPosition, -2, 1);
+        Position upleft2 = move(orinalPosition, -1, 2);
+        Position downright1 = move(orinalPosition, 2, -1);
+        Position downright2 = move(orinalPosition, 1, -2);
+        Position downleft1 = move(orinalPosition, -2, -1);
+        Position downleft2 = move(orinalPosition, -1, -2);
 
         checkNewPosition(orinalPosition, board, isWhite, list, upright1);
         checkNewPosition(orinalPosition, board, isWhite, list, upright2);
