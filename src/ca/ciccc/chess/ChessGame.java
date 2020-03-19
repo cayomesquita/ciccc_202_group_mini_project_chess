@@ -32,10 +32,10 @@ public class ChessGame {
 
         Piece piece = boardController.getByPosition(position1);
 
-       // System.out.println(position2);
-        System.out.println(position1);
-        List<Movement> result = boardController.getPossibleMovements(position1);
-        System.out.println(result.size());
+        System.out.println(position2);
+
+        List<Movement> result = boardController.getPossibleMovements(position2);
+        System.out.println("You have " + result.size() + " movements to to.");
         System.out.println(result.stream()
                 .map(movement -> movement.toString())
                 .collect(Collectors.joining(", ", "[", "]")));

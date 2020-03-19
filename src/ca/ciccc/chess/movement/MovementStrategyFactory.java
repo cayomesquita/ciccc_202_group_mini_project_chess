@@ -27,7 +27,7 @@ public final class MovementStrategyFactory {
         }
         if (piece instanceof Knight) {
             // TODO Zack
-            return Arrays.asList();
+            return Arrays.asList(MovementKnightStrategy.getInstance());
         }
         if (piece instanceof Pawn) {
             // TODO Tomona
