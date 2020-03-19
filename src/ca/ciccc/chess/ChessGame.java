@@ -1,12 +1,14 @@
 package ca.ciccc.chess;
 
 import ca.ciccc.chess.board.BoardController;
+import ca.ciccc.chess.input.InputController;
 import ca.ciccc.chess.movement.Movement;
 import ca.ciccc.chess.piece.*;
 
 import java.util.List;
 import java.util.Set;
 import java.util.stream.Collectors;
+
 
 public class ChessGame {
 
@@ -19,6 +21,7 @@ public class ChessGame {
     public void start() throws Exception {
         boardController.addPieceTest();
         boardController.printBoard();
+
     }
 
     //FIXME remove test
@@ -65,6 +68,4 @@ public class ChessGame {
 
         boardController.printBoard();
     }
-
-
 }
