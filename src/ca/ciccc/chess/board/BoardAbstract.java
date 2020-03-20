@@ -1,5 +1,11 @@
 package ca.ciccc.chess.board;
 
+import ca.ciccc.chess.piece.Position;
+
+import java.util.Collections;
+import java.util.HashSet;
+import java.util.Set;
+
 public abstract class BoardAbstract implements Board {
 
     public static final int LENGTH_BOARD = 8;

@@ -3,6 +3,9 @@ package ca.ciccc.chess.board;
 import ca.ciccc.chess.piece.Piece;
 import ca.ciccc.chess.piece.Position;
 
+import java.util.HashSet;
+import java.util.Set;
+
 public class ChessBoardBasic extends BoardAbstract {
 
     public static final char WHITE = '█';
@@ -87,28 +90,41 @@ public class ChessBoardBasic extends BoardAbstract {
 
     @Override
     public void add(Piece piece, Position position) {
-        this.pieces[position.getRow()][position.getCollumn()] = piece;
+        this.pieces[position.getRow()][position.getColumn()] = piece;
         updateBoard();
     }
 
     @Override
     public boolean move(Position from, Position to) throws Exception {
-        if (pieces[from.getRow()][from.getCollumn()] == null) {
+        if (pieces[from.getRow()][from.getColumn()] == null) {
             throw new Exception("Invalid input. The position does not have a piece");
-        } else if (pieces[to.getRow()][to.getCollumn()] != null &&
-                pieces[to.getRow()][to.getCollumn()].getIsWhite() == pieces[from.getRow()][from.getCollumn()].getIsWhite()) {
+        } else if (pieces[to.getRow()][to.getColumn()] != null &&
+                pieces[to.getRow()][to.getColumn()].getIsWhite() == pieces[from.getRow()][from.getColumn()].getIsWhite()) {
             throw new Exception("Invalid input. The same color piece is in the new position.");
         }
 
-        pieces[to.getRow()][to.getCollumn()] = pieces[from.getRow()][from.getCollumn()];
-        pieces[from.getRow()][from.getCollumn()] = null;
+        pieces[to.getRow()][to.getColumn()] = pieces[from.getRow()][from.getColumn()];
+        pieces[from.getRow()][from.getColumn()] = null;
         updateBoard();
         return true;
     }
 
     @Override
+    public Set<Position> getAllPiecePositions(boolean whitePlayer) {
+        Set<Position> collection = new HashSet<>();
+        for (int i = 0; i < pieces.length; i++) {
+            for (int p = 0; p < pieces.length; p++) {
+                if (pieces[i][p] != null && pieces[i][p].getIsWhite() == whitePlayer) {
+                    collection.add(new Position(i, p));
+                }
+            }
+        }
+        return collection;
+    }
+
+    @Override
     public Piece get(Position position) {
-        return this.pieces[position.getRow()][position.getCollumn()];
+        return this.pieces[position.getRow()][position.getColumn()];
     }
 
     private void updateBoard() {
