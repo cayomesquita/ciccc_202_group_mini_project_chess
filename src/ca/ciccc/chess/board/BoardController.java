@@ -25,7 +25,7 @@ public class BoardController {
         return instance;
     }
 
-    public void addPieceTest() {
+    public void initialize() {
         addWhitePieces();
         addBlackPieces();
     }
@@ -69,7 +69,7 @@ public class BoardController {
     }
 
     //FIXME remove test
-    public BoardController addPieceTest(Piece piece, Position position) {
+    public BoardController initialize(Piece piece, Position position) {
         board.add(piece, position);
         return this;
     }
@@ -120,5 +120,14 @@ public class BoardController {
             }
         }
         return false;
+    }
+
+    public Set<Movement> getAllPossibleMovements(boolean whitePlayer) throws Exception {
+        Set<Position> positions = board.getAllPiecePositions(whitePlayer);
+        Set<Movement> collection = new HashSet<>();
+        for (Position position : positions) {
+            collection.addAll(getPossibleMovements(position));
+        }
+        return collection;
     }
 }

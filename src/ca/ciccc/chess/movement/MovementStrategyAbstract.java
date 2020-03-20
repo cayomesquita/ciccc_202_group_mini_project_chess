@@ -22,11 +22,11 @@ public abstract class MovementStrategyAbstract implements MovementStrategy {
     }
 
     protected boolean isPositionInsideBoard(Position nextPosition, Board board) {
-        return nextPosition.getRow() >= 0 && nextPosition.getRow() < board.size() && nextPosition.getCollumn() >= 0 && nextPosition.getCollumn() < board.size();
+        return nextPosition.getRow() >= 0 && nextPosition.getRow() < board.size() && nextPosition.getColumn() >= 0 && nextPosition.getColumn() < board.size();
     }
 
     protected Position move(Position position, int horizontal, int vertical) {
-        return new Position(position.getRow() + vertical, position.getCollumn() + horizontal);
+        return new Position(position.getRow() + vertical, position.getColumn() + horizontal);
     }
 
     protected void checkNewPosition(Position orinalPosition, Board board, boolean isWhite, List<Movement> list, Position position) {

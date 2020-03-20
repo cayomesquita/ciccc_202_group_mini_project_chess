@@ -4,28 +4,21 @@ import java.util.Objects;
 
 public class Position {
     int row;
-    int collumn;
+    int column;
 
-    public Position(String row, int collumn) throws Exception {
+    public Position(String row, int column) throws Exception {
         int x2 = exchange(row);
-        if (x2 >= 0 && x2 < 8 && collumn >= 0 && collumn < 8) {
+        if (x2 >= 0 && x2 < 8 && column >= 0 && column < 8) {
             this.row = x2;
-            this.collumn = collumn;
+            this.column = column;
         }
     }
 
     public static Position parseBoardPosition(char letter, char number) throws Exception {
-        return new Position(exchangeRow(letter), exchangeCollumn(number));
+        return new Position(exchangeRow(number), exchangeCollumn(letter));
     }
 
-    private static int exchangeCollumn(char number) throws Exception {
-        if (number >= '1' && number <= '9') {
-            return (char) (number - '1');
-        }
-        throw new Exception("Collumn out of range");
-    }
-
-    private static int exchangeRow(char letter) throws Exception {
+    private static int exchangeCollumn(char letter) throws Exception {
         if (letter >= 'A' && letter <= 'H') {
             return (char) (letter - 'A');
         } else if (letter >= 'a' && letter <= 'h') {
@@ -34,9 +27,16 @@ public class Position {
         throw new Exception("Row out of range");
     }
 
-    public Position(int row, int collumn) {
+    private static int exchangeRow(char letter) throws Exception {
+        if (letter >= '1' && letter <= '9') {
+            return (char) (letter - '1');
+        }
+        throw new Exception("Collumn out of range");
+    }
+
+    public Position(int row, int column) {
         this.row = row;
-        this.collumn = collumn;
+        this.column = column;
     }
 
     private int exchange(String x) throws Exception {
@@ -67,8 +67,8 @@ public class Position {
         return row;
     }
 
-    public int getCollumn() {
-        return collumn;
+    public int getColumn() {
+        return column;
     }
 
     // setter
@@ -76,8 +76,8 @@ public class Position {
         this.row = row;
     }
 
-    public void setCollumn(int collumn) {
-        this.collumn = collumn;
+    public void setColumn(int column) {
+        this.column = column;
     }
 
     @Override
@@ -86,20 +86,25 @@ public class Position {
         if (o == null || getClass() != o.getClass()) return false;
         Position position = (Position) o;
         return row == position.row &&
-                collumn == position.collumn;
+                column == position.column;
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(row, collumn);
+        return Objects.hash(row, column);
     }
 
     @Override
     public String toString() {
-        return "{" +
-                row +
-                ", " + collumn +
-                '}';
+        return String.format("%s%s", formatDigit(column), formatLetter(row));
+    }
+
+    private char formatLetter(int row) {
+        return (char) ('1' + row);
+    }
+
+    private char formatDigit(int collumn) {
+        return (char) ('a' + collumn);
     }
 }
 

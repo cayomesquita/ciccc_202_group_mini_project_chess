@@ -6,7 +6,6 @@ import ca.ciccc.chess.piece.Position;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.stream.Collectors;
 
 public final class MovementBishopStrategy extends MovementStrategyAbstract {
 
@@ -27,14 +26,14 @@ public final class MovementBishopStrategy extends MovementStrategyAbstract {
         List<Movement> list = new ArrayList<>();
             // front right
             int originalRow = originalPosition.getRow();
-            int originalCl = originalPosition.getCollumn();
+            int originalCl = originalPosition.getColumn();
             while(originalRow < 8 && originalCl < 8 && stop == false) {
                 possiblePosition = new Position(++originalRow, ++originalCl);
                 checkNewPosition(originalPosition, board, isWhite, list, possiblePosition);
             }
 //             front left
             originalRow = originalPosition.getRow();
-            originalCl = originalPosition.getCollumn();
+            originalCl = originalPosition.getColumn();
             stop = false;
             while(originalRow < 8 && originalCl > 0 && stop == false ) {
                 possiblePosition = new Position(++originalRow, --originalCl);
@@ -42,7 +41,7 @@ public final class MovementBishopStrategy extends MovementStrategyAbstract {
             }
             // back right
             originalRow = originalPosition.getRow();
-            originalCl = originalPosition.getCollumn();
+            originalCl = originalPosition.getColumn();
             stop = false;
             while(originalRow > 0 && originalCl < 8 && stop == false) {
                 possiblePosition = new Position(--originalRow, ++originalCl);
@@ -50,7 +49,7 @@ public final class MovementBishopStrategy extends MovementStrategyAbstract {
             }
             // back Left
             originalRow = originalPosition.getRow();
-            originalCl = originalPosition.getCollumn();
+            originalCl = originalPosition.getColumn();
             stop = false;
             while(originalRow > 0 && originalCl > 0 && stop == false) {
                 possiblePosition = new Position(--originalRow, --originalCl);
