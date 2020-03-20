@@ -9,7 +9,6 @@ import java.util.List;
 import java.util.Set;
 import java.util.stream.Collectors;
 
-
 public class ChessGame {
 
     private BoardController boardController;
@@ -21,7 +20,6 @@ public class ChessGame {
     public void start() throws Exception {
         boardController.addPieceTest();
         boardController.printBoard();
-
     }
 
     //FIXME remove test
@@ -37,15 +35,14 @@ public class ChessGame {
 //                .addPieceTest(new Rook(true), position4);
 //        Piece piece = boardController.getByPosition(position1);
 
-        Position position1 = new Position(3, 3);
-//        Position position2 = new Position(2, 2);
-//        Position position3 = new Position(4, 1);
-//        Position position4 = new Position(1, 2);
-        boardController
-                .addPieceTest(new Knight(true), position1);
-//                .addPieceTest(new Rook(true), position2)
-//                .addPieceTest(new Rook(false), position3)
-//                .addPieceTest(new Rook(true), position4);
+        Position position1 = new Position(0, 1);
+        Position position2 = new Position(2, 2);
+        Position position3 = new Position(1, 1);
+        Position position4 = new Position(1, 2);
+        boardController.addPieceTest(new King(true), position1)
+                .addPieceTest(new Rook(true), position2)
+                .addPieceTest(new Rook(false), position3)
+                .addPieceTest(new Rook(true), position4);
         Piece piece = boardController.getByPosition(position1);
 
 //        Position position1 = new Position(1, 1);
@@ -58,9 +55,10 @@ public class ChessGame {
 //                .addPieceTest(new Rook(true), position4);
 //        Piece piece = boardController.getByPosition(position1);
 
-        System.out.println(position1);
+        System.out.println(position2);
 
         Set<Movement> result = boardController.getPossibleMovements(position1);
+
         System.out.println("You have " + result.size() + " movements to to.");
         System.out.println(result.stream()
                 .map(movement -> movement.toString())
@@ -68,5 +66,17 @@ public class ChessGame {
 
         boardController.printBoard();
         InputController.input();
+
+        Movement movement1 = new Movement(position1, position3);
+        System.out.println(movement1);
+        boardController.move(movement1);
+
+        boardController.printBoard();
+
+
+        // Check if the game is over or not
+        if(boardController.checkmateOrNot(movement1.getArrival())){
+            return;
+        }
     }
 }

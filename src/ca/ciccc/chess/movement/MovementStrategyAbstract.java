@@ -37,4 +37,9 @@ public abstract class MovementStrategyAbstract implements MovementStrategy {
             }
         }
     }
+
+    @Override
+    public boolean checkPossibleMoviment(Movement movement, Board board, boolean isWhite) {
+        return getPossibleMoviments(movement.getStarting(), board, isWhite).contains(movement);
+    }
 }

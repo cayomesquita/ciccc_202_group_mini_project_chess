@@ -38,8 +38,9 @@ public class InputController {
                 continue;
             }
             if (input.equals("resign")) {
-                System.out.println("Function to Resign");
+                System.out.println("GAME OVER! Won by Resignation");
                 continue;
+
             }
             if (input.equals("moves")) {
                 System.out.println("Function to show possible moves");

@@ -92,16 +92,18 @@ public class ChessBoardBasic extends BoardAbstract {
     }
 
     @Override
-    public void move(Position from, Position to) throws Exception {
+    public boolean move(Position from, Position to) throws Exception {
         if (pieces[from.getRow()][from.getCollumn()] == null) {
             throw new Exception("Invalid input. The position does not have a piece");
-        } else if (pieces[to.getRow()][to.getCollumn()].getIsWhite() == pieces[from.getRow()][from.getCollumn()].getIsWhite()) {
+        } else if (pieces[to.getRow()][to.getCollumn()] != null &&
+                pieces[to.getRow()][to.getCollumn()].getIsWhite() == pieces[from.getRow()][from.getCollumn()].getIsWhite()) {
             throw new Exception("Invalid input. The same color piece is in the new position.");
         }
 
         pieces[to.getRow()][to.getCollumn()] = pieces[from.getRow()][from.getCollumn()];
         pieces[from.getRow()][from.getCollumn()] = null;
         updateBoard();
+        return true;
     }
 
     @Override

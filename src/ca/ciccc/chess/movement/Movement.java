@@ -24,6 +24,14 @@ public class Movement {
         return new Movement(starting, arrival);
     }
 
+    public Position getStarting() {
+        return starting;
+    }
+
+    public Position getArrival() {
+        return arrival;
+    }
+
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
