@@ -101,9 +101,9 @@ public class ChessGame {
         Position position3 = new Position(1, 1);
         Position position4 = new Position(1, 2);
         boardController.initialize(new King(true), position1)
-                .initialize(new Rook(true), position2)
-                .initialize(new Rook(false), position3)
-                .initialize(new Rook(true), position4);
+                .initialize(new King(false), position2)
+                .initialize(new King(false), position3)
+                .initialize(new King(false), position4);
         Piece piece = boardController.getByPosition(position1);
 
 //        Position position1 = new Position(1, 1);
@@ -129,6 +129,7 @@ public class ChessGame {
         InputController.inputMenu();
 
         Movement movement1 = new Movement(position1, position3);
+        System.out.println(boardController.checkmateOrNot(movement1.getArrival()));
         System.out.println(movement1);
         boardController.move(movement1);
 
