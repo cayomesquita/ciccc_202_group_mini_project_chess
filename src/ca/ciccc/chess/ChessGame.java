@@ -67,5 +67,6 @@ public class ChessGame {
                 .collect(Collectors.joining(", ", "[", "]")));
 
         boardController.printBoard();
+        InputController.input();
     }
 }
